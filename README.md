@@ -49,7 +49,7 @@
 
 - Similar to the SQL
 
-![img1](./images/img3.png)
+![img1](./image/img3.png)
 
 example:
     - create node:
