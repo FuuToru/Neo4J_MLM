@@ -78,8 +78,7 @@ example:
     ![img12](./image/img12.png)
 
 ### Summary
-
-    Through the article, we've learned about Neo4j, MLM including what it is, it's basic objects, querying methods, and a quick overview of MLM with some Cypher queries for querying the multi-level marketing graph database. Have a great day !
+- Through the article, we've learned about Neo4j, MLM including what it is, it's basic objects, querying methods, and a quick overview of MLM with some Cypher queries for querying the multi-level marketing graph database. Have a great day !
 
 
 
