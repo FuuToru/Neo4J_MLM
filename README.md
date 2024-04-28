@@ -1,5 +1,4 @@
 # Neo4J_MLM
-### Basic summary
 ![diagram](./image/img1.png)
 
 ### What is Neo4j ?
