@@ -21,7 +21,7 @@ FOREACH (i IN RANGE(0, size(periods)-2) |
           CREATE (p1)-[:NEXT]->(p2))));
 
 //
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/kvangundy/Slashco/master/item.csv" as line
+LOAD CSV WITH HEADERS FROM "https://github.com/FuuToru/Neo4J_MLM/blob/main/src/item.csv" as line
 WITH line,
   toInteger(line.item) as itemID,
   toFloat(line.price) as price,
@@ -30,29 +30,29 @@ WITH line,
 CREATE (:Item {itemID:itemID, name:line.name, price:price, kicker:kick, wholesalePrice:wholesale});
 
 //
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/kvangundy/Slashco/master/employees.csv" as line
+LOAD CSV WITH HEADERS FROM "https://github.com/FuuToru/Neo4J_MLM/blob/main/src/employees.csv" as line
 WITH line, toInteger(line.employeeID) as empID
 CREATE (:Person {employeeID:empID, name:line.name});
 
 //
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/kvangundy/Slashco/master/employees.csv" as line
+LOAD CSV WITH HEADERS FROM "https://github.com/FuuToru/Neo4J_MLM/blob/main/src/employees.csv" as line
 WITH line, toInteger(line.employeeID) as empID, toInteger(line.reportsTo) as reportsToID
 MATCH (sub:Person {employeeID: empID}), (boss:Person {employeeID: reportsToID})
 MERGE (sub)-[:REPORTS_TO]->(boss);
 
 //
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/kvangundy/Slashco/master/transactions.csv" as line
+LOAD CSV WITH HEADERS FROM "https://github.com/FuuToru/Neo4J_MLM/blob/main/src/transactions.csv" as line
 WITH line, toInteger(line.transactionID) as transID
 CREATE (:Transaction {transactionID:transID});
 
 //
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/kvangundy/Slashco/master/transactions.csv" as line
+LOAD CSV WITH HEADERS FROM "https://github.com/FuuToru/Neo4J_MLM/blob/main/src/transactions.csv" as line
 WITH line, toInteger(line.transactionID) as transID, toInteger(line.period) as period
 MATCH (t:Transaction {transactionID: transID}), (p:Period {period: period})
 CREATE (t)-[:OCCURRED_IN]->(p);
 
 //
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/kvangundy/Slashco/master/transactions.csv" as line
+LOAD CSV WITH HEADERS FROM "https://github.com/FuuToru/Neo4J_MLM/blob/main/src/transactions.csv" as line
 WITH line,
   toInteger(line.transactionID) as transID,
   toInteger(line.item1) as itemID1,
@@ -67,7 +67,7 @@ CREATE (tx)-[:CONTAINS]->(i1),
        (tx)-[:CONTAINS]->(i3);
 
 //
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/kvangundy/Slashco/master/transactions.csv" as line
+LOAD CSV WITH HEADERS FROM "https://github.com/FuuToru/Neo4J_MLM/blob/main/src/transactions.csv" as line
 WITH line,
   toInteger(line.transactionID) as transID,
   toInteger(line.salesRepID) as repID
